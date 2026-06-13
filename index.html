@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Favicon & Manifest -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/web-app-manifest-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon/web-app-manifest-512x512.png">
+
+  <!-- SEO Meta Tags -->
+  <title>HYMHE | Healthy Young Mind for Healthy Earth</title>
+  <meta name="description" content="HYMHE is a youth-led global digital movement promoting mental well-being, sustainability, youth leadership, and positive social impact. Join our global community of changemakers.">
+  <meta name="keywords" content="HYMHE, Healthy Young Mind for Healthy Earth, youth movement, mental health, sustainability, youth leadership, digital influence, climate action">
+  <meta name="author" content="HYMHE Movement">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="HYMHE | Healthy Young Mind for Healthy Earth">
+  <meta property="og:description" content="A youth-led global digital movement focused on promoting healthy thinking, sustainability, and youth leadership for positive social impact.">
+  <meta property="og:image" content="https://hymhe.org/assets/og-image.png"> <!-- Placeholder image URL -->
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="HYMHE | Healthy Young Mind for Healthy Earth">
+  <meta property="twitter:description" content="A youth-led global digital movement focused on promoting healthy thinking, sustainability, and youth leadership for positive social impact.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header class="header" id="main-header">
+    <div class="container navbar">
+      <a href="#hero" class="logo" id="nav-logo">
+        <img src="assets/logo/logo.png" alt="HYMHE Logo" class="logo-img">
+      </a>
+      
+      <button class="nav-toggle" id="menu-toggle-btn" aria-label="Toggle Navigation Menu">
+        <i data-lucide="menu" id="menu-icon-hamburger"></i>
+      </button>
+      
+      <ul class="nav-menu" id="navigation-menu-list">
+        <li><a href="#about" class="nav-link" id="nav-link-about">About</a></li>
+        <li><a href="#vision" class="nav-link" id="nav-link-vision">Vision</a></li>
+        <li><a href="#impact" class="nav-link" id="nav-link-impact">Impact</a></li>
+        <li><a href="#team" class="nav-link" id="nav-link-team">Team</a></li>
+        <li><a href="#founder" class="nav-link" id="nav-link-founder">Founder</a></li>
+        <li><a href="#join" class="nav-link" id="nav-link-join">Join Us</a></li>
+        <li class="nav-cta">
+          <button class="btn btn-primary join-movement-trigger" id="navbar-cta-btn">Join Movement</button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content reveal">
+        <div class="badge badge-blue">
+          <i data-lucide="globe" style="width: 14px; height: 14px;"></i>
+          A Youth-Led Global Digital Movement
+        </div>
+        <h1 class="hero-title">Healthy Young Mind for Healthy Earth</h1>
+        <p class="hero-desc">
+          Promoting positive thinking, mental well-being, sustainability, youth leadership, and positive digital influence for meaningful global impact.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary join-movement-trigger" id="hero-primary-cta">Join The Movement</button>
+          <a href="#about" class="btn btn-secondary" id="hero-secondary-cta">Learn More</a>
+        </div>
+      </div>
+      
+      <div class="hero-visual reveal">
+        <!-- Interactive Canvas for Particle Network -->
+        <canvas id="hero-canvas"></canvas>
+        
+        <!-- Fallback SVG/Illustration layout in case JS fails or Canvas is disabled -->
+        <div class="hero-illustration-fallback">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="grad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#22C55E" stop-opacity="0.15" />
+                <stop offset="100%" stop-color="#2563EB" stop-opacity="0.02" />
+              </radialGradient>
+            </defs>
+            <circle cx="50" cy="50" r="45" fill="url(#grad)" stroke="rgba(34, 197, 94, 0.15)" stroke-width="0.5" />
+            <!-- Inner orbits -->
+            <circle cx="50" cy="50" r="30" fill="none" stroke="rgba(37, 99, 235, 0.1)" stroke-width="0.5" stroke-dasharray="2 2" />
+            <circle cx="50" cy="50" r="18" fill="none" stroke="rgba(34, 197, 94, 0.1)" stroke-width="0.5" />
+            <!-- Connection nodes -->
+            <circle cx="50" cy="50" r="3" fill="#22C55E" opacity="0.8" />
+            <circle cx="20" cy="35" r="2" fill="#2563EB" opacity="0.7" />
+            <circle cx="80" cy="45" r="2.5" fill="#22C55E" opacity="0.7" />
+            <circle cx="35" cy="75" r="2" fill="#22C55E" opacity="0.6" />
+            <circle cx="70" cy="70" r="2" fill="#2563EB" opacity="0.6" />
+            <circle cx="45" cy="20" r="1.5" fill="#2563EB" opacity="0.5" />
+            <!-- Connection lines -->
+            <line x1="50" y1="50" x2="20" y2="35" stroke="rgba(37, 99, 235, 0.2)" stroke-width="0.5" />
+            <line x1="50" y1="50" x2="80" y2="45" stroke="rgba(34, 197, 94, 0.2)" stroke-width="0.5" />
+            <line x1="50" y1="50" x2="35" y2="75" stroke="rgba(34, 197, 94, 0.2)" stroke-width="0.5" />
+            <line x1="50" y1="50" x2="70" y2="70" stroke="rgba(37, 99, 235, 0.2)" stroke-width="0.5" />
+            <line x1="20" y1="35" x2="45" y2="20" stroke="rgba(37, 99, 235, 0.15)" stroke-width="0.5" />
+            <line x1="80" y1="45" x2="70" y2="70" stroke="rgba(34, 197, 94, 0.15)" stroke-width="0.5" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about section-padding" id="about">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="badge">Who We Are</span>
+        <h2 class="section-title">About HYMHE</h2>
+        <p class="section-subtitle">
+          HYMHE is a global collective of young thinkers, creators, and advocates who believe that mental well-being and environmental health are deeply interconnected. We lead digital actions to inspire healthier minds and a healthier planet.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <!-- Card 1 -->
+        <div class="glass-card about-card reveal" id="about-card-positive-content">
+          <div class="card-icon-wrapper">
+            <i data-lucide="sparkles"></i>
+          </div>
+          <h3 class="card-title">Positive Content</h3>
+          <p class="card-desc">
+            Combating digital fatigue and negativity by creating and curating uplifting, inspiring, and constructive digital media for young audiences worldwide.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass-card about-card reveal" id="about-card-mental-wellbeing">
+          <div class="card-icon-wrapper">
+            <i data-lucide="brain"></i>
+          </div>
+          <h3 class="card-title">Mental Well-being</h3>
+          <p class="card-desc">
+            Raising awareness about youth mental health challenges, providing resources, and cultivating digital spaces that support mindfulness and healthy thinking.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass-card about-card reveal" id="about-card-sustainability">
+          <div class="card-icon-wrapper">
+            <i data-lucide="leaf"></i>
+          </div>
+          <h3 class="card-title">Sustainability</h3>
+          <p class="card-desc">
+            Inspiring environmental awareness and action. We promote sustainable living and highlight youth participation in climate conservation efforts.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="glass-card about-card reveal" id="about-card-youth-leadership">
+          <div class="card-icon-wrapper">
+            <i data-lucide="users"></i>
+          </div>
+          <h3 class="card-title">Youth Leadership</h3>
+          <p class="card-desc">
+            Empowering the next generation of changemakers with communication skills, collaborative tools, and leadership opportunities for public impact.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision Pillars Section -->
+  <section class="vision section-padding" id="vision">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="badge badge-blue">Our Direction</span>
+        <h2 class="section-title">Four Vision Pillars</h2>
+        <p class="section-subtitle">
+          Our goals are structured around four core pillars that guide our campaigns, research, content, and collaborative projects.
+        </p>
+      </div>
+
+      <div class="vision-grid">
+        <!-- Pillar 1 -->
+        <div class="glass-card vision-card reveal" id="vision-pillar-thinking">
+          <div class="card-icon-wrapper">
+            <i data-lucide="smile"></i>
+          </div>
+          <h3 class="card-title">Healthy Thinking</h3>
+          <p class="card-desc">
+            Shifting mindsets from stress and negativity towards constructive problem-solving, self-care, resilience, and optimism.
+          </p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="glass-card vision-card reveal" id="vision-pillar-influence">
+          <div class="card-icon-wrapper">
+            <i data-lucide="globe"></i>
+          </div>
+          <h3 class="card-title">Responsible Digital Influence</h3>
+          <p class="card-desc">
+            Encouraging young digital creators to use their voice and platforms responsibly, spreading constructive ideas and facts instead of hostility.
+          </p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="glass-card vision-card reveal" id="vision-pillar-environment">
+          <div class="card-icon-wrapper">
+            <i data-lucide="trees"></i>
+          </div>
+          <h3 class="card-title">Environmental Awareness</h3>
+          <p class="card-desc">
+            Educating peers on ecological footprints, biodiversity, climate actions, and local green campaigns to trigger real-world change.
+          </p>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="glass-card vision-card reveal" id="vision-pillar-social-impact">
+          <div class="card-icon-wrapper">
+            <i data-lucide="heart"></i>
+          </div>
+          <h3 class="card-title">Positive Social Impact</h3>
+          <p class="card-desc">
+            Fostering global dialogues, bridging cultural gaps, and driving youth-led projects addressing inequality and local community issues.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why HYMHE Matters Section -->
+  <section class="why-matters section-padding" id="impact">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="badge">The Context</span>
+        <h2 class="section-title">Why HYMHE Matters</h2>
+        <p class="section-subtitle">
+          We face unprecedented global challenges, but we also hold powerful tools to build an optimistic, sustainable future.
+        </p>
+      </div>
+
+      <div class="why-grid">
+        <!-- Challenges Column -->
+        <div class="why-column challenges reveal" id="why-column-challenges">
+          <h3 class="why-column-title">
+            <i data-lucide="alert-triangle"></i>
+            The Challenges We Face
+          </h3>
+          <div class="why-list">
+            <!-- Item 1 -->
+            <div class="why-item">
+              <div class="why-item-icon"><i data-lucide="frown" style="width: 16px; height: 16px;"></i></div>
+              <div class="why-item-content">
+                <h4>Rising Mental Stress</h4>
+                <p>Global stressors leave young minds vulnerable to anxiety, burnout, and emotional fatigue in a fast-paced environment.</p>
+              </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="why-item">
+              <div class="why-item-icon"><i data-lucide="frown" style="width: 16px; height: 16px;"></i></div>
+              <div class="why-item-content">
+                <h4>Digital Negativity</h4>
+                <p>Algorithmic clickbait and toxic digital communication spaces amplify division, isolation, and negative self-comparison.</p>
+              </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="why-item">
+              <div class="why-item-icon"><i data-lucide="frown" style="width: 16px; height: 16px;"></i></div>
+              <div class="why-item-content">
+                <h4>Social Disconnection</h4>
+                <p>Despite being digitally hyper-connected, youth report feeling higher levels of loneliness and lack of offline community support.</p>
+              </div>
+            </div>
+            <!-- Item 4 -->
+            <div class="why-item">
+              <div class="why-item-icon"><i data-lucide="frown" style="width: 16px; height: 16px;"></i></div>
+              <div class="why-item-content">
+                <h4>Climate Challenges</h4>
+                <p>Eco-anxiety is climbing as young people witness environmental degradation, prompting a vital need for positive green action.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Opportunities Column -->
+        <div class="why-column opportunities reveal" id="why-column-opportunities">
+          <h3 class="why-column-title">
+            <i data-lucide="trending-up"></i>
+            The Opportunities We See
+          </h3>
+          <div class="why-list">
+            <!-- Item 1 -->
+            <div class="why-item">
+              <div class="why-item-icon"><i data-lucide="lightbulb" style="width: 16px; height: 16px;"></i></div>
+              <div class="why-item-content">
+                <h4>Global Connectivity</h4>
+                <p>Digital networks allow cross-border collaboration, enabling youth to build massive, synchronized positive campaigns.</p>
+              </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="why-item">
+              <div class="why-item-icon"><i data-lucide="lightbulb" style="width: 16px; height: 16px;"></i></div>
+              <div class="why-item-content">
+                <h4>Youth Influence</h4>
+                <p>Young content creators shape digital culture, giving us the power to rewrite online narratives toward constructive topics.</p>
+              </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="why-item">
+              <div class="why-item-icon"><i data-lucide="lightbulb" style="width: 16px; height: 16px;"></i></div>
+              <div class="why-item-content">
+                <h4>Creative Power</h4>
+                <p>Utilizing design, research, writing, and social strategy to translate complex problems into engaging digital solutions.</p>
+              </div>
+            </div>
+            <!-- Item 4 -->
+            <div class="why-item">
+              <div class="why-item-icon"><i data-lucide="lightbulb" style="width: 16px; height: 16px;"></i></div>
+              <div class="why-item-content">
+                <h4>Positive Change</h4>
+                <p>Every tiny digital action—be it awareness, positive discourse, or a green pledge—fuels a wave of social transformation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Work Section -->
+  <section class="how-work section-padding" id="team">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="badge">Structure</span>
+        <h2 class="section-title">How We Work</h2>
+        <p class="section-subtitle">
+          Our movement is organized into specialized teams that collaborate across time zones to bring campaigns to life.
+        </p>
+      </div>
+
+      <div class="how-grid">
+        <!-- Team 1 -->
+        <div class="how-card reveal" id="work-team-content">
+          <div class="how-num">01</div>
+          <h3>Content Creation Team</h3>
+          <p>Drafting messages, designing visual assets, and crafting high-quality educational posts focused on mental well-being and climate issues.</p>
+        </div>
+
+        <!-- Team 2 -->
+        <div class="how-card reveal" id="work-team-research">
+          <div class="how-num">02</div>
+          <h3>Research & Awareness Team</h3>
+          <p>Investigating core stressors, sustainability facts, and youth trends to supply our content and outreach teams with credible insights.</p>
+        </div>
+
+        <!-- Team 3 -->
+        <div class="how-card reveal" id="work-team-outreach">
+          <div class="how-num">03</div>
+          <h3>Outreach & Collaboration</h3>
+          <p>Connecting with universities, environmental groups, and mental health organizations to forge partnerships and amplify campaigns.</p>
+        </div>
+
+        <!-- Team 4 -->
+        <div class="how-card reveal" id="work-team-community">
+          <div class="how-num">04</div>
+          <h3>Community Coordination</h3>
+          <p>Facilitating discussions, hosting webinars, managing feedback loops, and ensuring an open, safe environment for all members.</p>
+        </div>
+
+        <!-- Team 5 -->
+        <div class="how-card reveal" id="work-team-media">
+          <div class="how-num">05</div>
+          <h3>Social Media & Digital Strategy</h3>
+          <p>Optimizing organic reach across platforms, managing community growth, and analyzing digital engagement patterns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Team Grid Section -->
+  <section class="team section-padding" id="core-team">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="badge badge-blue">Collaboration</span>
+        <h2 class="section-title">Meet Our Core Team</h2>
+        <p class="section-subtitle">
+          A global group of passionate coordinators directing HYMHE's strategic decisions and global campaigns.
+        </p>
+      </div>
+
+      <div class="team-grid" id="core-team-grid-container">
+        <!-- Card 1 -->
+        <div class="team-card reveal" id="team-member-1">
+          <div class="team-image">
+            <img src="assets/images/kalyan-karini.jpeg" alt="Team Member">
+          </div>
+          <h3 class="team-name">Kalyan Karini Pandey</h3>
+          <p class="team-role">Founder</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="team-card reveal" id="team-member-2">
+          <div class="team-image">
+            <img src="assets/images/manmohan-singh-rawat.jpeg" alt="Team Member">
+          </div>
+          <h3 class="team-name">Manmohan Singh Rawat</h3>
+          <p class="team-role">Co-Founder</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="team-card reveal" id="team-member-3">
+          <div class="team-image">
+            <img src="assets/images/rahab-ajmal.jpeg" alt="Team Member">
+          </div>
+          <h3 class="team-name">Rahab Ajmal</h3>
+          <p class="team-role">Team Coordination Manager</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="team-card reveal" id="team-member-4">
+          <div class="team-image">
+            <img src="assets/images/satvik-shukla.jpeg" alt="Team Member">
+          </div>
+          <h3 class="team-name">Satvik Shukla</h3>
+          <p class="team-role">International News and Research Coordinator</p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="team-card reveal" id="team-member-5">
+          <div class="team-image">
+            <img src="assets/images/dr-jagadish-aditya.jpeg" alt="Team Member">
+          </div>
+          <h3 class="team-name">Dr. Jagadish Aditya D. India</h3>
+          <p class="team-role">International News and Research Coordinator</p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="team-card reveal" id="team-member-6">
+          <div class="team-image">
+            <img src="assets/images/krishna-nitin-parik.jpeg" alt="Team Member">
+          </div>
+          <h3 class="team-name">Krishna Nitin Parik</h3>
+          <p class="team-role">Outreach Team and Social Media</p>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="team-card reveal" id="team-member-7">
+          <div class="team-image">
+            <img src="assets/images/adarsh-j.jpeg" alt="Team Member">
+          </div>
+          <h3 class="team-name">Adarsh J</h3>
+          <p class="team-role">Outreach Team and Social Media</p>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="team-card reveal" id="team-member-7">
+          <div class="team-image">
+            <img src="assets/images/temiloluwa-ileakoko.jpeg" alt="Team Member">
+          </div>
+          <h3 class="team-name">Temiloluwa Ifeakoko</h3>
+          <p class="team-role">Important Events and Dates Coordinator</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder Section -->
+  <section class="founder section-padding" id="founder">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="badge">Movement Leadership</span>
+        <h2 class="section-title">Founder Profile</h2>
+        <p class="section-subtitle">
+          Leading HYMHE towards mental well-being awareness, youth diplomacy, and environmental sustainability.
+        </p>
+      </div>
+
+      <div class="founder-grid-layout reveal">
+        <!-- Left Column: Main Profile Card -->
+        <div class="founder-main-card glass-card" id="founder-meta-card">
+          <div class="founder-avatar-wrapper">
+            <div class="founder-image">
+              <img src="assets/images/kalyan-karini.jpeg" alt="Kalyan Karini Pandey">
+            </div>
+            <div class="founder-avatar-badge" title="Verified Youth Leader">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+          </div>
+          
+          <div class="founder-meta">
+            <h3 class="founder-name">Kalyan Karini Pandey</h3>
+            <p class="founder-role">Speaker, Activist & Youth Leader</p>
+            <div class="founder-badges">
+              <span class="founder-tag tag-diplomacy">Diplomacy</span>
+              <span class="founder-tag tag-sustainability">Sustainability</span>
+              <span class="founder-tag tag-advocacy">Advocacy</span>
+            </div>
+          </div>
+
+          <div class="founder-quote-wrapper">
+            <i class="fa-solid fa-quote-left quote-icon-start"></i>
+            <p class="founder-quote-text">
+              By nurturing a healthy mind in our youth, we lay down the foundations for a healthy, sustainable planet. Global dialogue and digital leadership are our pathways to this change.
+            </p>
+            <i class="fa-solid fa-quote-right quote-icon-end"></i>
+          </div>
+        </div>
+
+        <!-- Right Column: Structured Categories -->
+        <div class="founder-achievements-dashboard" id="founder-achievements-dashboard-block">
+          <!-- Category 1: Global Diplomacy -->
+          <div class="achievement-category-card glass-card">
+            <div class="category-header">
+              <div class="category-icon-box diplomacy">
+                <i class="fa-solid fa-earth-americas"></i>
+              </div>
+              <h4 class="category-title">Diplomacy & Global Dialogue</h4>
+            </div>
+            <ul class="achievement-list">
+              <li>
+                <span class="bullet-point"></span>
+                <p><strong>Youth Parliament Speaker</strong> &mdash; Chaired mock parliamentary sessions, fostering active debates on public policy issues.</p>
+              </li>
+              <li>
+                <span class="bullet-point"></span>
+                <p><strong>Participant, G20 Youth Conclave 2023</strong> &mdash; Collaborated with international youth delegates to discuss sustainable development.</p>
+              </li>
+              <li>
+                <span class="bullet-point"></span>
+                <p><strong>The Leadership Dialogue Participant</strong> &mdash; Shared viewpoints in "Words That Shaped Nations" (India–Russia Dialogue).</p>
+              </li>
+              <li>
+                <span class="bullet-point"></span>
+                <p><strong>South Korea Travel Program</strong> &mdash; Selected for the Special Travel Day Program promoting youth cultural exchange.</p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Category 2: Awards & Extracurriculars -->
+          <div class="achievement-category-card glass-card">
+            <div class="category-header">
+              <div class="category-icon-box awards">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <h4 class="category-title">Awards & Leadership Recognition</h4>
+            </div>
+            <ul class="achievement-list">
+              <li>
+                <span class="bullet-point"></span>
+                <p><strong>Women Empowerment Award</strong> &mdash; Honored by Dainik Jagran for outstanding leadership and community contribution.</p>
+              </li>
+              <li>
+                <span class="bullet-point"></span>
+                <p><strong>State & National Competitions</strong> &mdash; Multiple-time winner in extracurricular leadership, debating, and public speaking.</p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Category 3: Volunteering & Advocacy -->
+          <div class="achievement-category-card glass-card">
+            <div class="category-header">
+              <div class="category-icon-box volunteering">
+                <i class="fa-solid fa-hands-holding-child"></i>
+              </div>
+              <h4 class="category-title">Volunteering & Community Impact</h4>
+            </div>
+            <ul class="achievement-list">
+              <li>
+                <span class="bullet-point"></span>
+                <p><strong>5+ Years of Volunteering</strong> &mdash; Broad experience organizing campaigns for youth well-being and local action.</p>
+              </li>
+              <li>
+                <span class="bullet-point"></span>
+                <p><strong>National Service Scheme (NSS)</strong> &mdash; Volunteered for social community welfare programs and field campaigns.</p>
+              </li>
+              <li>
+                <span class="bullet-point"></span>
+                <p><strong>My Bharat Volunteer</strong> &mdash; Actively engaged in national digital frameworks for youth empowerment and development.</p>
+              </li>
+              <li>
+                <span class="bullet-point"></span>
+                <p><strong>Dedicated Youth Advocate</strong> &mdash; Advocate for youth leadership, social impact, awareness, and community development.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join Us / Call to Action Section -->
+  <section class="join section-padding" id="join">
+    <div class="container text-center">
+      <div class="join-content reveal">
+        <span class="badge badge-blue" style="border-color: rgba(255, 255, 255, 0.2); background-color: rgba(255, 255, 255, 0.1); color: white;">Get Involved</span>
+        <h2 class="join-title">Are You Ready to Make an Impact?</h2>
+        <p class="join-desc">
+          We bring together young minds from all disciplines to build campaigns, write resources, design graphics, and organize green drives. Join our community of change-makers today.
+        </p>
+        
+        <div class="keywords-container">
+          <span class="keyword-tag">Creators</span>
+          <span class="keyword-tag">Thinkers</span>
+          <span class="keyword-tag">Researchers</span>
+          <span class="keyword-tag">Designers</span>
+          <span class="keyword-tag">Storytellers</span>
+          <span class="keyword-tag">Changemakers</span>
+        </div>
+        
+        <button class="btn btn-accent btn-primary join-movement-trigger" id="join-section-main-cta" style="background-color: white; color: var(--dark-green); box-shadow: 0 10px 20px rgba(0,0,0,0.15);">
+          <i data-lucide="user-plus"></i> Join HYMHE
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <a href="#hero" class="footer-logo" id="footer-logo-link">
+            <img src="assets/logo/logo.png" alt="HYMHE Logo" class="logo-img">
+          </a>
+          <p class="footer-desc">
+            Healthy Young Mind for Healthy Earth
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-icon" id="footer-social-whatsapp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" class="social-icon" id="footer-social-instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-icon" id="footer-social-youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="footer-title">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#about" class="footer-link" id="footer-link-about">About HYMHE</a></li>
+            <li><a href="#vision" class="footer-link" id="footer-link-vision">Vision Pillars</a></li>
+            <li><a href="#impact" class="footer-link" id="footer-link-impact">Why It Matters</a></li>
+            <li><a href="#team" class="footer-link" id="footer-link-team">Our Team & Structure</a></li>
+            <li><a href="#founder" class="footer-link" id="footer-link-founder">Founder Profile</a></li>
+          </ul>
+        </div>
+
+        <!-- Privacy & Movement -->
+        <div>
+          <h3 class="footer-title">Get Involved</h3>
+          <ul class="footer-links">
+            <li><a href="#join" class="footer-link join-movement-trigger" id="footer-link-apply">Apply to Join</a></li>
+            <li><a href="#team" class="footer-link" id="footer-link-campaigns">Active Campaigns</a></li>
+            <li><a href="#" class="footer-link" id="footer-link-newsletter">Newsletter Sub</a></li>
+            <li><a href="#" class="footer-link" id="footer-link-faq">Frequently Asked Qs</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Placeholders -->
+        <div class="footer-contact-info">
+          <h3 class="footer-title">Contact Us</h3>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <p style="color: #d1d5db; font-weight: 500; font-size: 0.9rem;">Email Address</p>
+              <a href="mailto:info@hymhe.org" style="font-size: 0.95rem;" id="footer-contact-email">info@hymhe.org</a>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <p style="color: #d1d5db; font-weight: 500; font-size: 0.9rem;">Global Base</p>
+              <p style="font-size: 0.95rem;">Digital Movement / Global Connected Community</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer-bottom">
+        <p id="footer-copyright-text">&copy; 2026 HYMHE Movement. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#" class="footer-link" id="footer-privacy-policy">Privacy Policy</a>
+          <a href="#" class="footer-link" id="footer-terms-of-service">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Join Us / Apply Modal Dialog -->
+  <div class="modal-overlay" id="join-movement-modal-overlay">
+    <div class="modal-box" id="join-movement-modal-box">
+      <button class="modal-close" id="close-modal-btn" aria-label="Close Dialog">
+        <i data-lucide="x" style="width: 20px; height: 20px;"></i>
+      </button>
+      
+      <!-- Signup Form Container -->
+      <div id="modal-form-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Join the Movement</h3>
+          <p class="modal-desc">Fill in the fields below. A coordinator will contact you shortly via email to onboard you.</p>
+        </div>
+        
+        <form class="modal-form" id="hymhe-join-signup-form" onsubmit="return false;">
+          <div class="form-group">
+            <label for="form-input-name">Full Name</label>
+            <input type="text" id="form-input-name" class="form-input" placeholder="e.g. Alex Carter" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="form-input-email">Email Address</label>
+            <input type="email" id="form-input-email" class="form-input" placeholder="e.g. alex@example.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="form-input-role">Preferred Role / Interest Area</label>
+            <select id="form-input-role" class="form-input" required style="background: white;">
+              <option value="" disabled selected>Select your area of interest</option>
+              <option value="creator">Creator (Designers, Writers, Editors)</option>
+              <option value="thinker">Thinker (Strategists, Organizers)</option>
+              <option value="researcher">Researcher (Awareness, Fact-checking)</option>
+              <option value="storyteller">Storyteller (Social Media, Campaigns)</option>
+              <option value="changemaker">Changemaker (General Volunteer)</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="form-input-motivation">Why would you like to join HYMHE?</label>
+            <textarea id="form-input-motivation" class="form-input" placeholder="Tell us briefly about your ideas or skills..." required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" id="form-submit-btn" style="margin-top: 0.5rem; width: 100%;">
+            <i data-lucide="send" style="width: 16px; height: 16px;"></i> Submit Application
+          </button>
+        </form>
+      </div>
+      
+      <!-- Success Message Container -->
+      <div class="form-success-message" id="modal-success-screen">
+        <i data-lucide="check-circle"></i>
+        <h4>Application Received!</h4>
+        <p style="color: var(--secondary-text); margin-bottom: 2rem;">Thank you for taking the first step. Our team will review your application and send you a link to our community workspace shortly.</p>
+        <button class="btn btn-secondary" id="success-screen-close-btn" style="width: 100%;">Close Window</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- JavaScript -->
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
