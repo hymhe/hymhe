@@ -611,61 +611,108 @@ a {
   line-height: 1.5;
 }
 
-/* --- How We Work --- */
-.how-work {
+/* --- Ways to Contribute Section --- */
+.contribute {
   background-color: var(--bg-color);
 }
 
-.how-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.75rem;
+.contribute-quote {
+  max-width: 600px;
+  margin: -1.5rem auto 3rem auto;
+  padding: 0.75rem 1.5rem;
+  border-left: 3px solid var(--primary);
+  display: inline-block;
+  background-color: rgba(34, 197, 94, 0.03);
+  border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
 }
 
-.how-card {
-  padding: 2rem;
-  background-color: #ffffff;
-  border: 1px solid rgba(226, 232, 240, 0.6);
+.contribute-quote .quote-text {
+  font-family: var(--font-headings);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--dark-green);
+  line-height: 1.5;
+}
+
+.contribute-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.contribute-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
   border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-normal);
+  padding: 2.5rem 2rem;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
   display: flex;
   flex-direction: column;
   height: 100%;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
 }
 
-.how-card:hover {
+.contribute-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
   border-color: rgba(34, 197, 94, 0.25);
 }
 
-.how-num {
-  font-family: var(--font-headings);
-  font-size: 2.25rem;
-  font-weight: 800;
-  line-height: 1;
-  color: rgba(34, 197, 94, 0.15);
-  margin-bottom: 1.25rem;
-  transition: var(--transition-fast);
+.contribute-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: var(--border-radius-md);
+  background-color: var(--primary-light);
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  transition: transform var(--transition-normal), background-color var(--transition-normal), color var(--transition-normal);
 }
 
-.how-card:hover .how-num {
-  color: var(--primary);
+.contribute-card:hover .contribute-icon-wrapper {
+  background-color: var(--primary);
+  color: white;
   transform: scale(1.05);
 }
 
-.how-card h3 {
-  font-size: 1.15rem;
+.contribute-card h3 {
+  font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   color: var(--dark-text);
+  letter-spacing: -0.01em;
 }
 
-.how-card p {
-  font-size: 0.9rem;
+.contribute-card p {
+  font-size: 0.925rem;
   color: var(--secondary-text);
-  line-height: 1.5;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments for Contribute section */
+@media (max-width: 1024px) {
+  .contribute-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contribute-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .contribute-quote {
+    margin-bottom: 2.5rem;
+  }
 }
 
 /* --- Meet Our Core Team --- */
@@ -787,60 +834,44 @@ a {
   pointer-events: none;
 }
 
-.founder-grid-layout {
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 2.5rem;
-  align-items: start;
-}
-
-.founder-main-card {
+.founder-card-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 3rem 2.25rem;
-  position: sticky;
-  top: 7rem;
+  justify-content: center;
+  width: 100%;
 }
 
-.founder-avatar-wrapper {
+.founder-profile-card {
+  width: 100%;
+  max-width: 600px; /* Refined width to prevent visual imbalance and limit line length */
+  padding: 4.5rem 3.5rem; /* Increased top/bottom padding for a spacious, professional feel */
+  margin: 2rem auto 0 auto; /* Centered card with clean vertical margins */
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-lg), 0 10px 30px -15px rgba(22, 101, 52, 0.04);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+
+.founder-avatar-container {
   position: relative;
   width: 9.5rem;
   height: 9.5rem;
-  margin-bottom: 1.5rem;
+  margin: 0 auto 1.75rem auto;
 }
 
-.founder-image {
+.founder-photo-box {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   padding: 4px;
   background: linear-gradient(135deg, var(--primary), var(--accent));
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.15);
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
 
-.founder-image::before {
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  right: 4px;
-  bottom: 4px;
-  background-color: #e2e8f0;
-  border-radius: 50%;
-  border: 4px solid #ffffff;
-  z-index: 1;
-}
-
-.founder-image img {
-  position: relative;
-  z-index: 2;
+.founder-photo-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -848,208 +879,73 @@ a {
   display: block;
   border: 4px solid #ffffff;
   background-color: #e2e8f0;
-  transition: opacity var(--transition-normal);
 }
 
-.founder-image img[src="#"] {
-  opacity: 0;
+.founder-info-section {
+  text-align: center;
 }
 
-.founder-avatar-badge {
-  position: absolute;
-  bottom: 4px;
-  right: 4px;
-  background-color: var(--primary);
-  color: white;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 50%;
-  border: 3.5px solid white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  box-shadow: var(--shadow-md);
-  z-index: 10;
-}
-
-.founder-meta {
-  margin-bottom: 1.5rem;
-  width: 100%;
-}
-
-.founder-meta .founder-name {
-  font-size: 1.875rem;
+.founder-display-name {
+  font-size: 2.25rem;
   font-weight: 700;
   color: var(--dark-green);
-  margin-bottom: 0.25rem;
+  margin-bottom: 2rem;
   letter-spacing: -0.02em;
-}
-
-.founder-meta .founder-role {
-  font-size: 0.95rem;
-  color: var(--secondary-text);
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
-
-.founder-badges {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.founder-tag {
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.tag-diplomacy {
-  background-color: var(--accent-light);
-  color: var(--accent);
-  border: 1px solid rgba(37, 99, 235, 0.15);
-}
-
-.tag-sustainability {
-  background-color: var(--primary-light);
-  color: var(--dark-green);
-  border: 1px solid rgba(34, 197, 94, 0.2);
-}
-
-.tag-advocacy {
-  background-color: #fff7ed;
-  color: #c2410c;
-  border: 1px solid rgba(194, 65, 12, 0.15);
-}
-
-.founder-quote-wrapper {
   position: relative;
-  padding: 1.5rem;
-  background: var(--bg-color);
-  border-radius: var(--border-radius-lg);
-  border-left: 4px solid var(--primary);
-  text-align: left;
-  margin-top: 0.5rem;
-  width: 100%;
 }
 
-.founder-quote-text {
-  font-size: 0.95rem;
-  font-style: italic;
-  color: var(--dark-text);
-  line-height: 1.6;
-  position: relative;
-  z-index: 2;
+.founder-display-name::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  margin: 1.25rem auto 0 auto;
+  border-radius: 99px;
 }
 
-.quote-icon-start {
-  position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
-  font-size: 1.5rem;
-  color: var(--primary);
-  opacity: 0.08;
-  z-index: 1;
+.founder-biography {
+  font-size: 1.1rem; /* Slightly larger, editorial font size for enhanced readability */
+  line-height: 1.9; /* Generous line height for reading comfort */
+  color: #374151; /* High contrast, dark neutral gray */
+  text-align: center; /* Centered alignment for perfect visual balance */
+  max-width: 480px; /* Constrains text width for ideal characters per line */
+  margin: 0 auto;
 }
 
-.quote-icon-end {
-  position: absolute;
-  bottom: 0.5rem;
-  right: 0.5rem;
-  font-size: 1.5rem;
-  color: var(--primary);
-  opacity: 0.08;
-  z-index: 1;
+.founder-biography p {
+  margin-bottom: 1.75rem; /* Balanced, comfortable paragraph spacing */
 }
 
-/* Achievements Dashboard Column */
-.founder-achievements-dashboard {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.founder-biography p:last-child {
+  margin-bottom: 0;
 }
 
-.achievement-category-card {
-  padding: 2.25rem;
-  border-radius: var(--border-radius-xl);
+/* Responsive adjustments for Founder section */
+@media (max-width: 768px) {
+  .founder-profile-card {
+    padding: 3.5rem 2.5rem;
+  }
+  
+  .founder-display-name {
+    font-size: 1.85rem;
+    margin-bottom: 1.75rem;
+  }
+  
+  .founder-biography {
+    font-size: 1.025rem;
+    line-height: 1.8;
+  }
 }
 
-.category-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
-  padding-bottom: 0.75rem;
-}
-
-.category-icon-box {
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: var(--border-radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.2rem;
-  flex-shrink: 0;
-}
-
-.category-icon-box.diplomacy {
-  background: linear-gradient(135deg, var(--accent) 0%, #1d4ed8 100%);
-}
-
-.category-icon-box.awards {
-  background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
-}
-
-.category-icon-box.volunteering {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--dark-green) 100%);
-}
-
-.category-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--dark-text);
-  letter-spacing: -0.01em;
-}
-
-.achievement-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.achievement-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-}
-
-.bullet-point {
-  width: 7px;
-  height: 7px;
-  background-color: var(--primary);
-  border-radius: 50%;
-  flex-shrink: 0;
-  margin-top: 0.55rem;
-}
-
-.achievement-list li p {
-  font-size: 0.95rem;
-  color: var(--secondary-text);
-  line-height: 1.55;
-}
-
-.achievement-list li strong {
-  color: var(--dark-text);
-  font-weight: 600;
+@media (max-width: 480px) {
+  .founder-profile-card {
+    padding: 3rem 1.5rem;
+  }
+  
+  .founder-display-name {
+    font-size: 1.65rem;
+  }
 }
 
 /* --- Join The Movement Section --- */
@@ -1282,15 +1178,29 @@ textarea.form-input {
 }
 
 .footer-logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  background-color: #ffffff; /* White background container for brand logo visibility */
+  padding: 0.6rem 1.25rem; /* Balanced spacing around the logo */
+  border-radius: var(--border-radius-md); /* Consistent rounded corner radius */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Soft premium shadow */
+  transition: all var(--transition-normal);
+  width: fit-content; /* Sized to contain logo without stretching */
 }
 
 .footer-logo .logo-img {
-  height: 50px;
+  height: 40px; /* Scaled down logo height for balanced container borders */
   width: auto;
   display: block;
   object-fit: contain;
+}
+
+.footer-logo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 .footer-desc {
