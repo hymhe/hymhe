@@ -363,77 +363,85 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Form Submit Submission Handling
-  signupForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Validate form inputs
-    if (!validateForm()) {
-      return;
-    }
-    
-    // Loading State
-    const submitBtn = document.getElementById('form-submit-btn');
-    const originalBtnContent = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span class="btn-spinner"></span> Submitting...`;
-    
-    // Fields mapping
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const role = roleSelect.value;
-    const motivation = motivationText.value.trim();
-    
-    // Form URL-encoded string construction
-    const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSe8QKsFWCWDJrEhMM_ikYhJJLJuCwoqIMqDJ8MtySlcO3O5kw/formResponse';
-    
-    const params = new URLSearchParams();
-    params.append('entry.1192649635', name);
-    params.append('entry.1976754613', email);
-    params.append('entry.664220548', role);
-    params.append('entry.793342974', motivation);
-    
-    // Submit responses directly to Google Form
-    fetch(googleFormUrl, {
-      method: 'POST',
-      mode: 'no-cors', // Submit silently avoiding CORS block
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: params.toString()
-    })
-    .then(() => {
-      // Restore submit button state
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalBtnContent;
+  if (signupForm) {
+    signupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
       
-      // Clear form inputs
-      signupForm.reset();
+      // 1. Validate all fields first
+      if (!validateForm()) {
+        return;
+      }
       
-      // Close modal
-      closeModal();
+      // Loading State
+      const submitBtn = document.getElementById('form-submit-btn');
+      const originalBtnContent = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span class="btn-spinner"></span> Submitting...`;
       
-      // Show success toast
-      showToast(
-        "Application Submitted Successfully", 
-        "Thank you for your interest in HYMHE. Our team will review your application and contact you soon.", 
-        "success"
-      );
-    })
-    .catch((error) => {
-      console.error('Google Form Submission Error:', error);
+      // Fields mapping
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const role = roleSelect.value;
+      const motivation = motivationText.value.trim();
       
-      // Restore submit button state
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalBtnContent;
+      // Debugging logs before submission
+      console.log({
+        name,
+        email,
+        role,
+        motivation
+      });
       
-      // Show error toast
-      showToast(
-        "Submission Failed", 
-        "Something went wrong while submitting your application. Please try again in a few moments.", 
-        "error"
-      );
+      // 2. Submit using FormData
+      const formData = new FormData();
+      formData.append('entry.1192649635', name);
+      formData.append('entry.1976754613', email);
+      formData.append('entry.664220548', role);
+      formData.append('entry.793342974', motivation);
+      
+      // Google Form URL
+      const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSe8QKsFWCWDJrEhMM_ikYhJJLJuCwoqIMqDJ8MtySlcO3O5kw/formResponse';
+      
+      // Submit responses directly to Google Form
+      fetch(googleFormUrl, {
+        method: 'POST',
+        mode: 'no-cors', // Submit silently avoiding CORS block
+        body: formData
+      })
+      .then((response) => {
+        // Restore submit button state
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnContent;
+        
+        // Clear form inputs
+        signupForm.reset();
+        
+        // Close modal
+        closeModal();
+        
+        // Show success toast
+        showToast(
+          "Application Submitted Successfully", 
+          "Thank you for your interest in HYMHE. Our team will review your application and contact you soon.", 
+          "success"
+        );
+      })
+      .catch((error) => {
+        console.error('Google Form Submission Error:', error);
+        
+        // Restore submit button state
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnContent;
+        
+        // Show error toast
+        showToast(
+          "Submission Failed", 
+          "Your application could not be submitted. Please try again later or contact us directly.", 
+          "error"
+        );
+      });
     });
-  });
+  }
 
   // --- Canvas Connected Particle Network (Hero Section) ---
   const canvas = document.getElementById('hero-canvas');
