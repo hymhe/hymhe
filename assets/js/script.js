@@ -66,6 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('section');
   
   function highlightNavigationLinks() {
+    // Check if we are on the main page (has hero section) to run section highlighting
+    const hasHero = document.getElementById('hero');
+    if (!hasHero) {
+      return;
+    }
+
     let currentSectionId = '';
     const scrollPosition = window.scrollY + 250; // offset for triggers
 
@@ -83,10 +89,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     navLinks.forEach(link => {
-      link.classList.remove('active');
-      const hrefValue = link.getAttribute('href').substring(1);
-      if (hrefValue === currentSectionId) {
-        link.classList.add('active');
+      const href = link.getAttribute('href');
+      // Only manage active state for page-local anchor links starting with '#'
+      if (href && href.startsWith('#')) {
+        link.classList.remove('active');
+        if (href.substring(1) === currentSectionId) {
+          link.classList.add('active');
+        }
       }
     });
   }
@@ -115,18 +124,221 @@ document.addEventListener('DOMContentLoaded', () => {
     revealObserver.observe(element);
   });
 
+  // --- Toast Notification System ---
+  let toastContainer = document.querySelector('.toast-container');
+  if (!toastContainer) {
+    toastContainer = document.createElement('div');
+    toastContainer.className = 'toast-container';
+    document.body.appendChild(toastContainer);
+  }
+
+  function showToast(title, message, type) {
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    
+    const iconClass = type === 'success' ? 'fa-solid fa-circle-check' : 'fa-solid fa-triangle-exclamation';
+    
+    toast.innerHTML = `
+      <i class="${iconClass} toast-icon"></i>
+      <div class="toast-content">
+        <div class="toast-title">${title}</div>
+        <div class="toast-message">${message}</div>
+      </div>
+      <button class="toast-close" aria-label="Dismiss Notification">&times;</button>
+    `;
+    
+    toastContainer.appendChild(toast);
+    
+    // Trigger fade/slide-in
+    setTimeout(() => {
+      toast.classList.add('show');
+    }, 10);
+    
+    // Auto dismiss after 4 seconds
+    const autoDismissTimeout = setTimeout(() => {
+      dismissToast(toast);
+    }, 4000);
+    
+    // Manual close button listener
+    const closeBtn = toast.querySelector('.toast-close');
+    closeBtn.addEventListener('click', () => {
+      clearTimeout(autoDismissTimeout);
+      dismissToast(toast);
+    });
+  }
+
+  function dismissToast(toast) {
+    toast.classList.remove('show');
+    // Remove from DOM after transition finishes
+    toast.addEventListener('transitionend', () => {
+      toast.remove();
+    });
+  }
+
+  // --- Input Validation System ---
+  const nameInput = document.getElementById('form-input-name');
+  const emailInput = document.getElementById('form-input-email');
+  const roleSelect = document.getElementById('form-input-role');
+  const motivationText = document.getElementById('form-input-motivation');
+
+  // Helper to ensure error container spans exist
+  function initErrorContainers() {
+    [nameInput, emailInput, roleSelect, motivationText].forEach(input => {
+      if (!input) return;
+      let errSpan = input.parentElement.querySelector('.error-message');
+      if (!errSpan) {
+        errSpan = document.createElement('span');
+        errSpan.className = 'error-message';
+        errSpan.id = `error-${input.id}`;
+        input.parentElement.appendChild(errSpan);
+      }
+      
+      // Clear error state on input/change
+      input.addEventListener('input', () => clearError(input));
+      if (input.tagName === 'SELECT') {
+        input.addEventListener('change', () => clearError(input));
+      }
+    });
+  }
+
+  function showError(input, message) {
+    if (!input) return;
+    input.classList.add('error');
+    const errSpan = input.parentElement.querySelector('.error-message');
+    if (errSpan) {
+      errSpan.textContent = message;
+      errSpan.classList.add('active');
+    }
+  }
+
+  function clearError(input) {
+    if (!input) return;
+    input.classList.remove('error');
+    const errSpan = input.parentElement.querySelector('.error-message');
+    if (errSpan) {
+      errSpan.textContent = '';
+      errSpan.classList.remove('active');
+    }
+  }
+
+  function clearAllErrors() {
+    [nameInput, emailInput, roleSelect, motivationText].forEach(input => {
+      clearError(input);
+    });
+  }
+
+  function validateForm() {
+    let isValid = true;
+    
+    // 1. Name Validation
+    if (!nameInput.value || nameInput.value.trim().length === 0) {
+      showError(nameInput, "Please enter your full name.");
+      isValid = false;
+    } else if (nameInput.value.trim().length < 3) {
+      showError(nameInput, "Full name must be at least 3 characters long.");
+      isValid = false;
+    } else {
+      clearError(nameInput);
+    }
+    
+    // 2. Email Validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailInput.value || emailInput.value.trim().length === 0) {
+      showError(emailInput, "Please enter your email address.");
+      isValid = false;
+    } else if (!emailRegex.test(emailInput.value.trim())) {
+      showError(emailInput, "Please enter a valid email address.");
+      isValid = false;
+    } else {
+      clearError(emailInput);
+    }
+    
+    // 3. Role Validation
+    if (!roleSelect.value || roleSelect.value === "") {
+      showError(roleSelect, "Please select an interest area.");
+      isValid = false;
+    } else {
+      clearError(roleSelect);
+    }
+    
+    // 4. Motivation Validation
+    const motivationVal = motivationText.value ? motivationText.value.trim() : "";
+    if (motivationVal.length === 0) {
+      showError(motivationText, "Please tell us why you would like to join HYMHE.");
+      isValid = false;
+    } else if (motivationVal.length < 15) {
+      showError(motivationText, "Please provide at least 15 characters.");
+      isValid = false;
+    } else if (motivationVal.length > 500) {
+      showError(motivationText, "Motivation must not exceed 500 characters.");
+      isValid = false;
+    } else {
+      clearError(motivationText);
+    }
+    
+    return isValid;
+  }
+
+  // --- Focus Trap & Accessibility ---
+  let lastActiveElement = null;
+
+  function setupFocusTrap(modalEl) {
+    const focusableSelectors = 'button, [href], input, select, textarea, [tabindex="0"]';
+    
+    modalEl.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      
+      const focusableEls = Array.from(modalEl.querySelectorAll(focusableSelectors))
+                                .filter(el => !el.disabled && el.style.display !== 'none');
+      if (focusableEls.length === 0) return;
+      
+      const firstEl = focusableEls[0];
+      const lastEl = focusableEls[focusableEls.length - 1];
+      
+      if (e.shiftKey) {
+        if (document.activeElement === firstEl) {
+          lastEl.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastEl) {
+          firstEl.focus();
+          e.preventDefault();
+        }
+      }
+    });
+  }
+
+  // Initialize error spans and focus trap
+  initErrorContainers();
+  if (modalBox) {
+    setupFocusTrap(modalBox);
+  }
+
   // --- Modal Signup Box Trigger Actions ---
   function openModal() {
+    lastActiveElement = document.activeElement;
+    clearAllErrors();
     modalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden'; // Stop page scrolling
     formContent.style.display = 'block';
     successScreen.classList.remove('active');
     signupForm.reset();
+    
+    // Focus first input
+    setTimeout(() => {
+      if (nameInput) nameInput.focus();
+    }, 150);
   }
 
   function closeModal() {
     modalOverlay.classList.remove('active');
     document.body.style.overflow = ''; // Resume scrolling
+    
+    // Return focus to previous active element
+    if (lastActiveElement) {
+      lastActiveElement.focus();
+    }
   }
 
   joinTriggers.forEach(trigger => {
@@ -154,17 +366,73 @@ document.addEventListener('DOMContentLoaded', () => {
   signupForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    // Simulate application processing / onboarding dispatch
-    const name = document.getElementById('form-input-name').value;
-    const email = document.getElementById('form-input-email').value;
-    const role = document.getElementById('form-input-role').value;
-    const motivation = document.getElementById('form-input-motivation').value;
-
-    console.log('HYMHE Signup Form Submission:', { name, email, role, motivation });
+    // Validate form inputs
+    if (!validateForm()) {
+      return;
+    }
     
-    // Transition to success screen layout inside modal
-    formContent.style.display = 'none';
-    successScreen.classList.add('active');
+    // Loading State
+    const submitBtn = document.getElementById('form-submit-btn');
+    const originalBtnContent = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<span class="btn-spinner"></span> Submitting...`;
+    
+    // Fields mapping
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const role = roleSelect.value;
+    const motivation = motivationText.value.trim();
+    
+    // Form URL-encoded string construction
+    const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSe8QKsFWCWDJrEhMM_ikYhJJLJuCwoqIMqDJ8MtySlcO3O5kw/formResponse';
+    
+    const params = new URLSearchParams();
+    params.append('entry.1192649635', name);
+    params.append('entry.1976754613', email);
+    params.append('entry.664220548', role);
+    params.append('entry.793342974', motivation);
+    
+    // Submit responses directly to Google Form
+    fetch(googleFormUrl, {
+      method: 'POST',
+      mode: 'no-cors', // Submit silently avoiding CORS block
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: params.toString()
+    })
+    .then(() => {
+      // Restore submit button state
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnContent;
+      
+      // Clear form inputs
+      signupForm.reset();
+      
+      // Close modal
+      closeModal();
+      
+      // Show success toast
+      showToast(
+        "Application Submitted Successfully", 
+        "Thank you for your interest in HYMHE. Our team will review your application and contact you soon.", 
+        "success"
+      );
+    })
+    .catch((error) => {
+      console.error('Google Form Submission Error:', error);
+      
+      // Restore submit button state
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnContent;
+      
+      // Show error toast
+      showToast(
+        "Submission Failed", 
+        "Something went wrong while submitting your application. Please try again in a few moments.", 
+        "error"
+      );
+    });
   });
 
   // --- Canvas Connected Particle Network (Hero Section) ---
@@ -337,5 +605,53 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
     animate();
+  }
+
+  // --- FAQ Accordion Interactivity ---
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  if (faqQuestions.length > 0) {
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('.faq-toggle-btn i');
+        
+        // Check if item is already active
+        const isActive = item.classList.contains('active');
+        
+        // Close all other open FAQ items in the same section for accordion behavior
+        const allItems = item.parentElement.querySelectorAll('.faq-accordion-item');
+        allItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+            const otherAnswer = otherItem.querySelector('.faq-answer');
+            if (otherAnswer) {
+              otherAnswer.style.maxHeight = null;
+            }
+            const otherIcon = otherItem.querySelector('.faq-toggle-btn i');
+            if (otherIcon) {
+              otherIcon.setAttribute('class', 'fa-solid fa-plus');
+            }
+          }
+        });
+        
+        // Toggle current item
+        if (isActive) {
+          item.classList.remove('active');
+          answer.style.maxHeight = null;
+          if (icon) {
+            icon.setAttribute('class', 'fa-solid fa-plus');
+          }
+        } else {
+          item.classList.add('active');
+          // Set max-height dynamically using scrollHeight
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          if (icon) {
+            icon.setAttribute('class', 'fa-solid fa-minus');
+          }
+        }
+      });
+    });
   }
 });
