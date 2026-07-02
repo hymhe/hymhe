@@ -770,15 +770,15 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Temiloluwa Ifeakoko",
       role: "Important Events and Dates Coordinator",
       photo: "assets/images/temiloluwa-ileakoko.jpeg",
-      about: "This is a professional placeholder profile for a core team member of the HYMHE movement. As an active volunteer and leader, this member contributes to our mission of fostering healthy thinking, mental well-being, and environmental sustainability. They play a vital role in global outreach, digital influence, and youth leadership, working to build a highly supportive community for positive change.",
+      about: "Temiloluwa Ifeakoko is a Nigerian Gospel music minister, entrepreneur, actor, youth advocate, and peacebuilder dedicated to inspiring positive social change. As the CEO of Ifeakoko Group of Companies, he combines leadership, business, and community service to empower young people and promote sustainable development. Through music, entrepreneurship, and humanitarian initiatives, he continues to encourage integrity, peace, and impactful leadership across communities.",
       highlights: [
-        "Active Global Movement Volunteer",
-        "Youth Empowerment Advocate",
-        "Community Outreach Initiative Lead",
-        "Fact-Checking & Research Supporter",
-        "Social Media Campaign Contributor",
-        "Collaborator on Green Initiatives"
-      ]
+  "CEO, Ifeakoko Group of Companies",
+  "Gospel Music Minister",
+  "Youth Advocate & Peacebuilder",
+  "Yoruba Film Actor",
+  "Entrepreneur & Community Leader",
+  "Humanitarian & Social Impact Advocate"
+]
     },
     {
       name: "Shikhar Kaushik",
