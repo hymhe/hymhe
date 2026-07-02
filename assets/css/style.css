@@ -2340,3 +2340,184 @@ textarea.form-input {
     padding: 1.5rem 1.25rem;
   }
 }
+
+/* --- Core Team Redesign & Premium Profile Modal --- */
+.btn-team-profile {
+  margin-top: auto !important; /* Forces the button to align at the bottom of the card */
+  padding: 0.55rem 1.15rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--border-radius-md);
+  background-color: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  width: 100%;
+  max-width: 160px;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.btn-team-profile:hover {
+  background-color: var(--primary);
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.18);
+}
+
+.btn-team-profile i {
+  font-size: 0.75rem;
+  transition: transform var(--transition-fast);
+}
+
+.btn-team-profile:hover i {
+  transform: translateX(3px);
+}
+
+/* Profile Modal Specific Box Layout */
+.team-profile-modal-box {
+  max-width: 580px;
+  max-height: 90vh;
+  padding: 3.5rem 2.5rem 3rem 2.5rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.team-modal-content {
+  overflow-y: auto;
+  padding-right: 0.75rem;
+}
+
+/* Custom scrollbar for premium details scroll feel */
+.team-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+.team-modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.team-modal-content::-webkit-scrollbar-thumb {
+  background: rgba(17, 24, 39, 0.15);
+  border-radius: 3px;
+}
+
+.team-modal-header {
+  text-align: center;
+  margin-bottom: 2.25rem;
+}
+
+.team-modal-image-wrapper {
+  position: relative;
+  width: 9rem;
+  height: 9rem;
+  margin: 0 auto 1.25rem auto;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.team-modal-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  background-color: #e2e8f0;
+}
+
+.team-modal-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: var(--dark-text);
+  letter-spacing: -0.02em;
+  font-family: var(--font-headings);
+}
+
+.team-modal-role {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0;
+  font-family: var(--font-headings);
+}
+
+.team-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.team-modal-section h4 {
+  font-family: var(--font-headings);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--secondary-text);
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 0.4rem;
+}
+
+.team-modal-about {
+  font-size: 0.95rem;
+  color: var(--secondary-text);
+  line-height: 1.65;
+}
+
+.team-modal-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem 1rem;
+}
+
+.team-modal-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--secondary-text);
+  line-height: 1.4;
+}
+
+.team-modal-highlights li i {
+  color: var(--primary);
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 576px) {
+  .team-modal-highlights {
+    grid-template-columns: 1fr;
+  }
+  .team-profile-modal-box {
+    padding: 2.5rem 1.5rem 2rem 1.5rem;
+    max-height: 85vh;
+  }
+  .team-modal-name {
+    font-size: 1.35rem;
+  }
+  .team-modal-role {
+    font-size: 0.95rem;
+  }
+}
+
